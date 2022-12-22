@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Defining the class Cache"""
-from uuid import uuid4
 import redis
 from typing import Union, Callable, Optional, Union
+from uuid import uuid4
 
 
 class Cache():
@@ -22,8 +22,13 @@ class Cache():
             str, bytes, int, float]:
         """This function will convert the data to an expected format"""
         value = self._redis.get(key)
+        if value is None:
+            return None
+
         if fn:
             return fn(value)
+
+        return value
 
     def get_str(self, value: bytes) -> str:
         """Converts a byte string to string"""
