@@ -27,6 +27,7 @@ class Cache():
 
         if fn:
             return fn(value)
+        return value
 
     def get_str(self, value: bytes) -> str:
         """Converts a byte string to string"""
