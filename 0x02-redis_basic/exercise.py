@@ -18,12 +18,10 @@ class Cache():
         self._redis.set(key, data)
         return key
 
-    def get(self, key: str, fn: Optional[Callable] = None) -> Optional[
-            Union[str, bytes, int, float]]:
+    def get(self, key: str, fn: Optional[Callable] = None) -> Union[
+            str, bytes, int, float]:
         """This function will convert the data to an expected format"""
         value = self._redis.get(key)
-        if value is value:
-            return None
         if fn:
             return fn(value)
 
