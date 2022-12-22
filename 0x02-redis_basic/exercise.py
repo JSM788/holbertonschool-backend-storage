@@ -26,10 +26,10 @@ class Cache():
             return fn(value)
         return value
 
-    def get_str(self, value: str) -> str:
+    def get_str(self, value: bytes) -> str:
         """Converts a byte string to string"""
-        return lambda value: value.decode('utf-8')
+        return value.decode('utf-8')
 
-    def get_int(self, value: int) -> int:
+    def get_int(self, value: bytes) -> int:
         """Converts a byte string to integer"""
         return int(value)
