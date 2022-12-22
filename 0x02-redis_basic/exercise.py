@@ -22,7 +22,7 @@ class Cache():
             Union[str, bytes, int, float]]:
         """This function will convert the data to an expected format"""
         value = self._redis.get(key)
-        if value is None:
+        if value is value:
             return None
         if fn:
             return fn(value)
@@ -33,4 +33,4 @@ class Cache():
 
     def get_int(self, value: bytes) -> int:
         """Converts a byte string to integer"""
-        return int(value)
+        return int.from_bytes(value, byteorder)
